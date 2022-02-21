@@ -10,7 +10,7 @@ namespace CV19.Infrastructure.Commands.Base
         //Передаем управление этим событием системе WPF:
         public event EventHandler CanExecuteChanged
         {
-            add => CommandManager.RequerySuggested += value; 
+            add => CommandManager.RequerySuggested += value;
             remove => CommandManager.RequerySuggested -= value;
         }
         // Функция CanExecute возвращает либо истину либо ложь
@@ -19,4 +19,5 @@ namespace CV19.Infrastructure.Commands.Base
         public abstract bool CanExecute(object parameter);
         //Метод Execute - это то, что должно быть выполненно основной командой. Основная логика команды в Execute
         public abstract void Execute(object parameter);
+    }
 }
