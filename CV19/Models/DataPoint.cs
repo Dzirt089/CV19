@@ -2,8 +2,8 @@
 {
     internal struct DataPoint
     {
-        public double XValur { get; set; }
-        public double YValur { get; set; }
+        public double XValue { get; set; }
+        public double YValue { get; set; }
     }
 
 

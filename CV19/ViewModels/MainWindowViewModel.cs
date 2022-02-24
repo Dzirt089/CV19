@@ -7,6 +7,7 @@ using System.Text;
 using System.Windows;
 using System.Windows.Input;
 
+
 namespace CV19.ViewModels
 {
     // : ViewModel наследуем всю функциональность от этого класса, это события и 2 основных метода. При желании можно переопределить, освободить ресурсы, которые модель захватит вдруг
@@ -104,7 +105,7 @@ namespace CV19.ViewModels
                 const double to_rad = Math.PI / 180;
                 var y = Math.Sin(x * to_rad);
 
-                data_points.Add(new DataPoint { XValur = x, YValur = y});
+                data_points.Add(new DataPoint { XValue = x, YValue = y});
             }
             TestDataPoints = data_points;
         }
