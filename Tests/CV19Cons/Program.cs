@@ -119,7 +119,7 @@ namespace CV19Cons
             var russia_data = GetData()
                 .FirstOrDefault(v => v.Contry.Equals("Russia",StringComparison.OrdinalIgnoreCase));
 
-            Console.WriteLine(string.Join("\r\n", GetDates().Zip(russia_data.Counts, (date,count) => $"{date:dd:MM} - {count}")));
+            //Console.WriteLine(string.Join("\r\n", GetDates().Zip(russia_data.Counts, (date,count) => $"{date:dd:MM} - {count}")));
 
             Console.ReadLine();
         }

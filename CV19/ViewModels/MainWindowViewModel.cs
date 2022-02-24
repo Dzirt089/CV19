@@ -1,4 +1,5 @@
 ﻿using CV19.Infrastructure.Commands;
+using CV19.Models;
 using CV19.ViewModels.Base;
 using System;
 using System.Collections.Generic;
@@ -14,6 +15,26 @@ namespace CV19.ViewModels
         /*ViewModel, её основная задача - содержать в себе набор свойств, которые привязаны к визуальным элементам в дизайнере
             и вся логика ViewModel, изменять значение этих свойств внутри кода , а элементы интерфейса будут обнаруживать эти изменения
             и перерисовываться соответствующим образом.*/
+
+
+        //НАм понадобиться сво-во для перечесления точек данных, которые мы будем строить на графике
+        #region TestDataPoints : IEnumerable<DataPoint> - Тестовый набор данных для визуализации графиков
+        /// <summary>
+        /// Тестовый набор данных для визуализации графиков
+        /// </summary>
+        private IEnumerable<DataPoint> _TestDataPoints;
+        /// <summary>
+        /// Тестовый набор данных для визуализации графиков
+        /// </summary>
+        public IEnumerable<DataPoint> TestDataPoints 
+        { 
+            get => _TestDataPoints; 
+            set => Set(ref _TestDataPoints, value); 
+        }
+
+        #endregion
+
+
         #region Заголовок окна
         // Проверяем, что ViewModel реально работает, для этого надо создать какое-то свойство и подцепить к ниму визуальные элементы,чтобы они из него получили данные.
         // //Для этого обычно создаю заголовок окна и св-во окна, которое должно отображаться внизу в статус-баре
@@ -76,6 +97,16 @@ namespace CV19.ViewModels
             CloseApplicationCommand = new LambdaCommand(OnCloseApplicationCommandExecuted, CanCloseApplicationCommandExecute);
 
             #endregion
+
+            var data_points = new List<DataPoint>((int)(360 / 0.1));
+            for(var x = 0d;x <= 360; x += 0.1)
+            {
+                const double to_rad = Math.PI / 180;
+                var y = Math.Sin(x * to_rad);
+
+                data_points.Add(new DataPoint { XValur = x, YValur = y});
+            }
+            TestDataPoints = data_points;
         }
     }
 }
