@@ -41,8 +41,8 @@
             </StatusBarItem>
         </StatusBar>
         <TabControl>
-            <TabItem>
-                <TabItem.Header>
+            <TabItem Visibility="Collapsed">
+                <TabItem.Header >
                     <StackPanel Orientation="Horizontal">
                         <fa:ImageAwesome Icon="Regular_File" Height="13" Margin="0,0,5,0" Foreground="Red"/>
                         <TextBlock Text="Вкладка 1"/>
@@ -74,7 +74,7 @@
                                       Width="4"/>
                 </Grid>
             </TabItem>
-            <TabItem Header="График">
+            <TabItem Header="График" IsSelected="True">
                 <oxy:Plot>
                     <oxy:Plot.Axes>
                         <oxy:LinearAxis Position="Left"/>
