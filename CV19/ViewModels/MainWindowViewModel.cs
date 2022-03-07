@@ -1,8 +1,11 @@
 ﻿using CV19.Infrastructure.Commands;
 using CV19.Models;
+using CV19.Models.Decanat;
 using CV19.ViewModels.Base;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Linq;
 using System.Text;
 using System.Windows;
 using System.Windows.Input;
@@ -13,13 +16,18 @@ namespace CV19.ViewModels
     // : ViewModel наследуем всю функциональность от этого класса, это события и 2 основных метода. При желании можно переопределить, освободить ресурсы, которые модель захватит вдруг
     internal class MainWindowViewModel : ViewModel
     {
+        /*------------------------------------------------------------------------------------------------------------------------ */
+
+        public ObservableCollection<Group> Groups { get; }
+
         /*ViewModel, её основная задача - содержать в себе набор свойств, которые привязаны к визуальным элементам в дизайнере
             и вся логика ViewModel, изменять значение этих свойств внутри кода , а элементы интерфейса будут обнаруживать эти изменения
             и перерисовываться соответствующим образом.*/
 
 
-        //НАм понадобиться сво-во для перечесления точек данных, которые мы будем строить на графике
+
         #region TestDataPoints : IEnumerable<DataPoint> - Тестовый набор данных для визуализации графиков
+        //НАм понадобиться сво-во для перечесления точек данных, которые мы будем строить на графике
         /// <summary>
         /// Тестовый набор данных для визуализации графиков
         /// </summary>
@@ -74,6 +82,8 @@ namespace CV19.ViewModels
 
         #endregion
 
+        /*------------------------------------------------------------------------------------------------------------------------ */
+
         #region Команды
         //Команда, которая позволит закрывать нашу программу
         #region CloseApplicationCommand
@@ -91,6 +101,9 @@ namespace CV19.ViewModels
         #endregion
 
         //Теперь создаем команды внутри конструктора
+
+        /*------------------------------------------------------------------------------------------------------------------------ */
+
         public MainWindowViewModel()
         {
             #region Команды
@@ -108,6 +121,29 @@ namespace CV19.ViewModels
                 data_points.Add(new DataPoint { XValue = x, YValue = y});
             }
             TestDataPoints = data_points;
+
+            var student_index = 1;
+
+            //Создаем перечесление студентов в группе, скажем 10 человек на одну группу. Каждому присваиваем класс студент
+            var students = Enumerable.Range(1, 10).Select(i => new Student
+            {
+                Name = $"{ student_index}",
+                Surname = $"Surname{student_index}",
+                Patronymic = $"Patronymic{student_index++}",
+                Birthday = DateTime.Now,
+                Rating = 0
+            });
+
+            //Создадим перечесление в кол-ве 20-ти штук, затем берем каждое число и на его основе создаем группу
+            var groups = Enumerable.Range(1, 20).Select(i => new Group
+            {
+                Name = $"Группа {i}",
+                Students = new ObservableCollection<Student>(students) //В каждую группу будет входит по 10 студентов
+            }) ;
+
+            Groups = new ObservableCollection<Group>(groups); //Теперь группы создаться гораздо быстрее в ObservableCollection
+
+
         }
     }
 }
