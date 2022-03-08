@@ -20,6 +20,25 @@ namespace CV19.ViewModels
 
         public ObservableCollection<Group> Groups { get; }
 
+
+        #region SelectedGroup : Group - выбранная группа
+        //Теперь мы можем указать визуальному списку (DataGrid) тепрь, что его св-во SelectedItem теперь будет связано со св-ом SelectedGroup
+        //и наша ViewModels будет ощущать, что мы перемещаемся между элементами списка, сюда (в SelectedGroup) будет попадать все время новая группа
+        //и в set => Set(ref _SelectedGroup, value); , можно определить логику, которая необходима для обработки в интерфейсе выбираемой группы
+
+        /// <summary>Выбранная группа </summary>
+        private Group _SelectedGroup;
+
+
+        /// <summary> Выбранная группа </summary>
+        public Group SelectedGroup 
+        { 
+            get => _SelectedGroup; 
+            set => Set(ref _SelectedGroup, value); 
+        }
+        #endregion
+
+
         /*ViewModel, её основная задача - содержать в себе набор свойств, которые привязаны к визуальным элементам в дизайнере
             и вся логика ViewModel, изменять значение этих свойств внутри кода , а элементы интерфейса будут обнаруживать эти изменения
             и перерисовываться соответствующим образом.*/
