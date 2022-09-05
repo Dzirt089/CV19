@@ -134,11 +134,21 @@ namespace CV19.ViewModels
         private bool CanCreateGroupCommandExecute(object p) => true;
         private void OnCreateGroupCommandExecut(object p)
         {
+            var student_index = 1;
+            //Создаем перечесление студентов в группе, скажем 10 человек на одну группу. Каждому присваиваем класс студент
+            var students = Enumerable.Range(1, 10).Select(i => new Student
+            {
+                Name = $"{student_index}",
+                Surname = $"Surname{student_index}",
+                Patronymic = $"Patronymic{student_index++}",
+                Birthday = DateTime.Now,
+                Rating = 0
+            });
             var group_max_index = Groups.Count + 1;
             var new_group = new Group
             {
                 Name = $"Группа {group_max_index}",
-                Students = new ObservableCollection<Student>()
+                Students = new ObservableCollection<Student>(students)
             };
             Groups.Add(new_group);
         }

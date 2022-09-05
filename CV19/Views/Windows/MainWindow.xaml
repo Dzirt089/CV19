@@ -136,8 +136,8 @@
                                         <Setter Property="Background" Value="White"/>
                                     </Style>
                                 </UniformGrid.Resources>
-                                <Button Content="Добавить" Style="{StaticResource ButtonStyle}" Command="{Binding CreateGroupCommand}"/>
-                                <Button Content="Удалить" Style="{StaticResource ButtonStyle}" Command="{Binding DeleteGroupCommand}" CommandParameter="{Binding SelectGroup}"/>
+                                <Button Content="Добавить" Style="{StaticResource PrimaBtn}" Command="{Binding CreateGroupCommand}"/>
+                                <Button Content="Удалить" Style="{StaticResource DangerBtn}" Command="{Binding DeleteGroupCommand}" CommandParameter="{Binding SelectedGroup}"/>
                             </UniformGrid>
                             <ListBox ItemsSource="{Binding Groups}"
                                  SelectedItem="{Binding SelectedGroup}"
@@ -205,6 +205,10 @@
                                     DataFieldX="XValue"
                                     DataFieldY="YValue"/>
                 </oxy:Plot>
+            </TabItem>
+            <TabItem>
+                <Button VerticalAlignment="Top" HorizontalAlignment="Left"
+                        Content="123" Margin="15,5" Padding="14,5" Style="{StaticResource DangerBtn}"/>
             </TabItem>
         </TabControl>
     </DockPanel>
