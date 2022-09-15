@@ -104,7 +104,16 @@
                                         <Setter Property="Background" Value="White"/>
                                     </Style>
                                 </UniformGrid.Resources>
-                                <Button Content="Добавить" Style="{StaticResource PrimaBtn}" Command="{Binding CreateGroupCommand}"/>
+                                <Button Style="{StaticResource PrimaBtn}" Command="{Binding CreateGroupCommand}">
+                                    <StackPanel Orientation="Horizontal">
+                                        <fa:ImageAwesome Height="12" Icon="Solid_Check" Foreground="LightGreen" Margin="0,0,3,0">
+                                            <fa:ImageAwesome.Effect>
+                                                <DropShadowEffect ShadowDepth="1"/>
+                                            </fa:ImageAwesome.Effect>
+                                        </fa:ImageAwesome>
+                                        <TextBlock Text="Добавить"/>
+                                    </StackPanel>
+                                </Button>
                                 <Button Content="Удалить" Style="{StaticResource DangerBtn}" Command="{Binding DeleteGroupCommand}" CommandParameter="{Binding SelectedGroup}"/>
                             </UniformGrid>
                             <ListBox ItemsSource="{Binding Groups}"

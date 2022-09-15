@@ -8,6 +8,11 @@
         Title="MainWindow" Height="450" Width="800">
     <Grid>
         <Button Content="Button" HorizontalAlignment="Left" Margin="270,184,0,0" VerticalAlignment="Top"/>
+        <CheckBox Content="CheckBox" HorizontalAlignment="Left" Margin="495,105,0,0" VerticalAlignment="Top"/>
+        <CheckBox Content="CheckBox" HorizontalAlignment="Left" Margin="495,148,0,0" VerticalAlignment="Top"/>
+        <CheckBox Content="CheckBox" HorizontalAlignment="Left" Margin="495,125,0,0" VerticalAlignment="Top"/>
+        <Ellipse HorizontalAlignment="Left" Height="100" Margin="180,285,0,0" Stroke="Black" VerticalAlignment="Top" Width="220"/>
+        <Slider HorizontalAlignment="Left" Margin="99,64,0,0" VerticalAlignment="Top" Width="120"/>
 
     </Grid>
 </Window>
