@@ -9,6 +9,7 @@ using System.Windows;
 namespace CV19
 {
     public partial class App : Application
-    {
+    { vd  :L{lnefvouibv;M io nfo;;fn;yenlufhe[}
+    ]
     }
 }
