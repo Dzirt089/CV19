@@ -6,7 +6,6 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
-using System.Text;
 using System.Windows;
 using System.Windows.Input;
 
@@ -25,7 +24,8 @@ namespace CV19.ViewModels
         /// <summary>Выбранный непонятный элемент</summary>
         private object _SelectedCompositeValue;
         /// <summary>Выбранный непонятный элемент</summary>
-        public object SelectedCompositeValue { 
+        public object SelectedCompositeValue
+        {
             get => _SelectedCompositeValue;
             set => Set(ref _SelectedCompositeValue, value);
         }
@@ -42,10 +42,10 @@ namespace CV19.ViewModels
 
 
         /// <summary> Выбранная группа </summary>
-        public Group SelectedGroup 
-        { 
-            get => _SelectedGroup; 
-            set => Set(ref _SelectedGroup, value); 
+        public Group SelectedGroup
+        {
+            get => _SelectedGroup;
+            set => Set(ref _SelectedGroup, value);
         }
         #endregion
 
@@ -65,10 +65,10 @@ namespace CV19.ViewModels
         /// <summary>
         /// Тестовый набор данных для визуализации графиков
         /// </summary>
-        public IEnumerable<DataPoint> TestDataPoints 
-        { 
-            get => _TestDataPoints; 
-            set => Set(ref _TestDataPoints, value); 
+        public IEnumerable<DataPoint> TestDataPoints
+        {
+            get => _TestDataPoints;
+            set => Set(ref _TestDataPoints, value);
         }
 
         #endregion
@@ -104,10 +104,10 @@ namespace CV19.ViewModels
         /// <summary>
         /// Статус программы
         /// </summary>
-        public string Status 
-        {   
-            get => _Status; 
-            set => Set(ref _Status, value); 
+        public string Status
+        {
+            get => _Status;
+            set => Set(ref _Status, value);
         }
 
         #endregion
@@ -118,7 +118,7 @@ namespace CV19.ViewModels
         //Команда, которая позволит закрывать нашу программу
         #region CloseApplicationCommand
 
-        public ICommand CloseApplicationCommand { get;}
+        public ICommand CloseApplicationCommand { get; }
 
         //OnCloseApplicationCommandExecuted - этот метод будет выполнятся, когда команда выполняется.
         private void OnCloseApplicationCommandExecuted(object p)
@@ -183,12 +183,12 @@ namespace CV19.ViewModels
             #endregion
 
             var data_points = new List<DataPoint>((int)(360 / 0.1));
-            for(var x = 0d;x <= 360; x += 0.1)
+            for (var x = 0d; x <= 360; x += 0.1)
             {
                 const double to_rad = Math.PI / 180;
                 var y = Math.Sin(x * to_rad);
 
-                data_points.Add(new DataPoint { XValue = x, YValue = y});
+                data_points.Add(new DataPoint { XValue = x, YValue = y });
             }
             TestDataPoints = data_points;
 
@@ -197,7 +197,7 @@ namespace CV19.ViewModels
             //Создаем перечесление студентов в группе, скажем 10 человек на одну группу. Каждому присваиваем класс студент
             var students = Enumerable.Range(1, 10).Select(i => new Student
             {
-                Name = $"{ student_index}",
+                Name = $"{student_index}",
                 Surname = $"Surname{student_index}",
                 Patronymic = $"Patronymic{student_index++}",
                 Birthday = DateTime.Now,
@@ -209,7 +209,7 @@ namespace CV19.ViewModels
             {
                 Name = $"Группа {i}",
                 Students = new ObservableCollection<Student>(students) //В каждую группу будет входит по 10 студентов
-            }) ;
+            });
 
             Groups = new ObservableCollection<Group>(groups); //Теперь группы создаться гораздо быстрее в ObservableCollection
 

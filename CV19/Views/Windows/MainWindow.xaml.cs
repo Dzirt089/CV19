@@ -15,11 +15,8 @@ using System.Windows.Shapes;
 
 namespace CV19
 {
-    public partial class MainWindow : Window
+    public partial class MainWindow 
     {
-        public MainWindow()
-        {
-            InitializeComponent();
-        }
+        public MainWindow() => InitializeComponent();
     }
 }
