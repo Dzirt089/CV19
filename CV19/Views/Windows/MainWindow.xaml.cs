@@ -17,6 +17,6 @@ namespace CV19
 {
     public partial class MainWindow 
     {
-        public MainWindow() => InitializeComponent(); gbbdr rdbbdr
+        public MainWindow() => InitializeComponent();
     }
 }
