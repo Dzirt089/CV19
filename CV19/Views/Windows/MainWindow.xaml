@@ -90,7 +90,14 @@
                             </UniformGrid>
                             <ListBox ItemsSource="{Binding Source={StaticResource GroupCollection}}"
                                  SelectedItem="{Binding SelectedGroup}"
-                                 SelectedIndex="0">
+                                 SelectedIndex="0" VirtualizingPanel.IsContainerVirtualizable="True"
+                                     VirtualizingPanel.IsVirtualizing="True"
+                                     VirtualizingPanel.VirtualizationMode="Recycling">
+                                <ListBox.ItemsPanel>
+                                    <ItemsPanelTemplate>
+                                        <VirtualizingStackPanel/>
+                                    </ItemsPanelTemplate>
+                                </ListBox.ItemsPanel>
                                 <ListBox.ItemTemplate>
                                     <DataTemplate DataType="decanat:Group">
                                         <StackPanel Orientation="Horizontal">
