@@ -60,11 +60,13 @@
                     <GroupBox Grid.Column="0" Header="Группы">
                         <DockPanel>
                             <DockPanel.Resources>
-                                <CollectionViewSource x:Key="GroupCollection" Source="{Binding Groups}"/>
+                                <CollectionViewSource x:Key="GroupCollection" Source="{Binding Groups}"
+                                                      Filter="GroupCollectionsFilter"/>
+
                             </DockPanel.Resources>
                             <DockPanel DockPanel.Dock="Top" Margin="3.0">
                                 <fa:ImageAwesome Icon="Solid_Search" Height="12" Margin="3,0"/>
-                                <TextBox/>
+                                <TextBox x:Name="GroupNameFilterText" TextChanged="GroupsFilterTextChanged"/>
                             </DockPanel>
                             <UniformGrid DockPanel.Dock="Bottom" Rows="1" Margin="0,3">
                                 <UniformGrid.Resources>
