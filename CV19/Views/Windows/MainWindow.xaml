@@ -59,6 +59,9 @@
                     </Grid.ColumnDefinitions>
                     <GroupBox Grid.Column="0" Header="Группы">
                         <DockPanel>
+                            <DockPanel.Resources>
+                                <CollectionViewSource x:Key="GroupCollection" Source="{Binding Groups}"/>
+                            </DockPanel.Resources>
                             <DockPanel DockPanel.Dock="Top" Margin="3.0">
                                 <fa:ImageAwesome Icon="Solid_Search" Height="12" Margin="3,0"/>
                                 <TextBox/>
@@ -83,7 +86,7 @@
                                 </Button>
                                 <Button Content="Удалить" Style="{StaticResource DangerBtn}" Command="{Binding DeleteGroupCommand}" CommandParameter="{Binding SelectedGroup}"/>
                             </UniformGrid>
-                            <ListBox ItemsSource="{Binding Groups}"
+                            <ListBox ItemsSource="{Binding Source={StaticResource GroupCollection}}"
                                  SelectedItem="{Binding SelectedGroup}"
                                  SelectedIndex="0">
                                 <ListBox.ItemTemplate>
